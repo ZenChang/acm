@@ -1,19 +1,13 @@
 
 // 最大公约数
-int gcd ( int x , int y )
+int gcd ( int n , int m )
 {
-    if ( 0 == x
-         || 0 == y )
+    int r = 0;
+    while ( m )
     {
-        return 0;
+        r = n % m;
+        n = m;
+        m = r;
     }
-
-    int z = y;
-    while ( x % y != 0 )
-    {
-        z = x % y;
-        x = y;
-        y = z;
-    }
-    return z;
+    return n;
 }
