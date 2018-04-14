@@ -1,0 +1,96 @@
+/*
+最小公倍数
+Time Limit: 2000/1000 MS (Java/Others) Memory Limit: 65536/32768 K (Java/Others)
+Total Submission(s): 5772 Accepted Submission(s): 4002
+
+
+Problem Description
+给定两个正整数，计算这两个数的最小公倍数。
+
+
+Input
+输入包含多组测试数据，每组只有一行，包括两个不大于1000的正整数.
+
+
+Output
+
+对于每个测试用例，给出这两个数的最小公倍数，每个实例输出一行。
+
+
+Sample Input
+10 14
+
+Sample Output
+70
+
+
+Source
+POJ
+
+
+Recommend
+Eddy
+
+基本原理编辑
+两个数的最大公约数是指能同时整除它们的最大正整数。 [1]
+设两数为a、b(a≥b)，求a和b最大公约数  的步骤如下：
+(1)用a除以b(a≥b)，得  。
+(2)若  ，则  ；
+(3)若  ，则再用b除以  ，得  .
+(4)若  ，则  ；若  ，则继续用  除以  ，......，如此下去，直到能整除为止。
+其最后一个余数为0的除数即为  的最大公约数。
+
+*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+struct MY_STRUCT
+{
+    int A;
+    int B;
+};
+
+bool cmp ( MY_STRUCT st_1 , MY_STRUCT st_2 )
+{
+    return ( st_1.A - st_1.B ) < (st_2.A - st_2.B );
+}
+
+int GCD ( int a , int b )
+{
+    if ( a < b )
+    {
+        swap ( a , b );
+    }
+    int r = a % b;
+    while ( r )
+    {
+        a = b;
+        b = r;
+        r = a % b;
+    }
+
+    return b;
+}
+
+int LCM ( int a , int b )
+{
+    return ( a * b ) / GCD ( a , b );
+}
+
+int main ( )
+{
+    int a = 0;
+    int b = 0;
+    while ( cin >> a >> b )
+    {
+        cout << LCM ( a , b ) << endl;
+    }
+
+    return 0;
+}
+
