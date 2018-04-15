@@ -1,0 +1,110 @@
+/*
+How many prime numbers 
+Time Limit: 3000/1000 MS (Java/Others) Memory Limit: 32768/32768 K (Java/Others)  
+Total Submission(s): 12699 Accepted Submission(s): 4221  
+
+ 
+Problem Description
+Give you a lot of positive integers, just to find out how many prime numbers there are.
+ 
+ 
+Input
+There are a lot of cases. In each case, there is an integer N representing the number of integers to find. Each integer won’t exceed 32-bit signed integer, and each of them won’t be less than 2.
+ 
+ 
+Output
+
+            For each case, print the number of prime numbers you have found out.
+ 
+ 
+Sample Input
+3
+2 3 4 
+ 
+Sample Output
+2 
+ 
+Author
+wangye
+ 
+ 
+Source
+HDU 2007-11 Programming Contest_WarmUp
+ 
+ 
+Recommend
+威士忌 
+
+
+*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+struct MY_STRUCT
+{
+    int A;
+    int B;
+};
+
+bool cmp ( MY_STRUCT st_1 , MY_STRUCT st_2 )
+{
+    return ( st_1.A - st_1.B ) < (st_2.A - st_2.B );
+}
+
+bool is_prime ( int value )
+{
+    if ( 1 == value )
+    {
+        return false;
+    }
+
+    if ( 2 == value || 3 == value )
+    {
+        return true;
+    }
+
+    if (6 < value )
+    {
+        if ( 1 != value % 6 && 5 != value % 6 )
+        {
+            return false;
+        }
+    }
+
+    for ( int i = 2; i <= sqrt ( ( double ) ( value ) ); ++i )
+    {
+        if ( 0 == value % i )
+        {
+            return false;
+        }
+    }
+
+    return 1;
+}
+
+int main ( )
+{
+    int N = 0;
+    while ( cin >> N )
+    {
+        int sum = 0;
+        for ( int i = 0; i < N; ++i )
+        {
+            int value = 0;
+            cin >> value;
+            if ( is_prime ( value ) )
+            {
+                sum += 1;
+            }
+        }
+
+        cout << sum << endl;
+    }
+    return 0;
+}
+
