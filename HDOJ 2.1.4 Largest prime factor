@@ -140,6 +140,35 @@ int PrintTable ( int table [ ])
     //}
     return 0;
 }
+// 打印素数表
+//int PrintTable ( int table [ ])
+//{
+//    memset ( table , 0 , MAX_SIZE );
+//    for ( int i = 2; i < MAX_SIZE; ++i)
+//    {
+//        if (0 == table[i ] ) // 目前新遇到的非合数
+//        {
+//            for ( int j = 2; j * i < MAX_SIZE; ++j )
+//            {
+//                table [ i * j ] = -1;
+//            }
+//        }
+//    }
+//
+//    for ( int i = 2; i < MAX_SIZE; ++i )
+//    {
+//        cout << i << ":";
+//        if ( -1 == table [ i ] )
+//        {
+//            cout << "is not prime" << endl;
+//        }
+//        else
+//        {
+//            cout << "is prime" << endl;
+//        }
+//    }
+//    return 0;
+//}
 
 
 int main ( )
